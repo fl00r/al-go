@@ -4,8 +4,8 @@ import (
 	"testing"
 )
 
-func TestLinkedList(t *testing.T) {
-	list := NewLinkedList()
+func TestLinkedListStack(t *testing.T) {
+	list := NewLinkedListStack()
 	list.Push(1)
 	list.Push(2)
 	p := list.Pop()
