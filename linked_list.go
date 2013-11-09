@@ -3,6 +3,7 @@ package algo
 /*
 
 Simple implementation of Linked List
+https://class.coursera.org/algs4partI-003/lecture/18
 
 */
 
