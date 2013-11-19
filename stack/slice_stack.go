@@ -1,5 +1,7 @@
 package stack
 
+// import( "fmt" )
+
 /*
 
 Slice (not Array) implementation of Stack
@@ -19,16 +21,20 @@ func NewSliceStack() (stack *SliceStack) {
 }
 
 func (stack *SliceStack) Pop() (item interface{}) {
+	s_len := cap(stack.data)
 	stack.data[stack.n] = nil
 	if stack.n > 0 {
 		stack.n -= 1
+	}
+	if stack.n < (s_len/4) && stack.n > 0 {
+		stack.resizeSlice(s_len/2)
 	}
 	item = stack.data[stack.n]
 	return
 }
 
 func (stack *SliceStack) Push(item interface{}) {
-	s_len := len(stack.data)
+	s_len := cap(stack.data)
 	if stack.n == s_len - 1 {
 		stack.resizeSlice(2 * s_len)
 	}
@@ -40,10 +46,16 @@ func(stack *SliceStack) IsEmpty() bool {
 	return stack.n == 0
 }
 
+/*
+
+private party
+
+*/
+
 func (stack *SliceStack) resizeSlice(newCap int) {
-	newSlice  := make([]interface{}, newCap, newCap)
-	for k, v := range stack.data {
-		newSlice[k] = v
+	newSlice := make([]interface{}, newCap, newCap)
+	for k := 0; k <= stack.n ; k++ {
+		newSlice[k] = stack.data[k]
 	}
 	stack.data = newSlice
 }

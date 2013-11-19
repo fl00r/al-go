@@ -28,4 +28,10 @@ func TestSliceStack(t *testing.T) {
 	if !list.IsEmpty() {
 		t.Errorf("Should be empty")
 	}
+	for k := 0; k < 100; k++ {
+		list.Push(k)
+	}
+	for k := 0; k < 100; k++ {
+		list.Pop()
+	}
 }
