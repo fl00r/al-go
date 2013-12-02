@@ -16,3 +16,5 @@ https://class.coursera.org/algs4partI-003/class/index
 	* SelectionSort
 	* InsertionSort
 	* ShellSort
+
+* Shuffle

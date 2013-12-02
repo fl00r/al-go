@@ -1,5 +1,7 @@
 package sort
-// import( "fmt" )
+import(
+	"math/rand"
+)
 
 func SelectionSort(data []int) {
 	n := len(data)
@@ -34,6 +36,14 @@ func ShellSort(data []int) {
 			}
 		}
 		h = h / 3
+	}
+}
+
+func Shuffle(data []int) {
+	n := len(data)
+	for i := 0; i < n; i++ {
+		j := rand.Intn(n)
+		swap(data, i, j)
 	}
 }
 
