@@ -1,6 +1,7 @@
 package sort
 import(
 	"math/rand"
+	// "fmt"
 )
 
 func SelectionSort(data []int) {
@@ -47,9 +48,44 @@ func Shuffle(data []int) {
 	}
 }
 
+func MergeSort(data []int) {
+	n := len(data)
+	aux := make([]int, n, n)
+	_ms_sort(data, aux, 0, n - 1)
+}
+
 /*
 	private party
 */
+
+func _ms_sort(data, aux []int, lo, hi int) {
+	if(hi > lo) {
+		mid := lo + (hi - lo) / 2
+		_ms_sort(data, aux, lo, mid)
+		_ms_sort(data, aux, mid+1, hi)
+		_ms_merge(data, aux, lo, mid, hi)
+	}
+}
+
+func _ms_merge(data, aux []int, lo, mid, hi int) {
+	for i, v := range(data) {
+		aux[i] = v
+	}
+
+	i := lo
+	j := mid + 1
+	for k := lo; k <= hi; k++ {
+		if i > mid {
+			data[k] = aux[j]; j++
+		} else if j > hi {
+			data[k] = aux[i]; i++
+		} else if less(aux, i, j) {
+			data[k] = aux[i]; i++
+		} else {
+			data[k] = aux[j]; j++
+		}
+	}
+}
 
 func swap(data []int, i, j int) {
 	i_val := data[i]

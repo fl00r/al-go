@@ -2,44 +2,77 @@ package sort
 
 import (
 	"testing"
+	"math/rand"
+	"sort"
+	// "fmt"
 )
 
+func randomArray(num int) []int {
+	data := make([]int, num, num)
+	for i, _ := range(data) {
+		data[i] = rand.Intn(1000)
+	}
+	return data
+}
+func copyArray(origin []int) []int {
+	new_orig := make([]int, len(origin))
+	copy(new_orig, origin)
+	return new_orig
+}
+
 func TestLinkedListStack(t *testing.T) {
-	var data []int
+	var current_copy []int
 
-	data = []int{ 5, 3, 2, 1, 4 }
-	SelectionSort(data)
-	for i, v := range(data) {
-		if i+1 != v {
-			t.Errorf("SelectionSort: %d should be equal to %d for %d", v, i+1, data)
-		}
-	}
-	
-	data = []int{ 5, 3, 2, 1, 4 }
-	InsertionSort(data)
-	for i, v := range(data) {
-		if i+1 != v {
-			t.Errorf("InsertionSort: %d should be equal to %d for %d", v, i+1, data)
-		}
-	}
-	
-	data = []int{ 5, 3, 2, 1, 4 }
-	ShellSort(data)
-	for i, v := range(data) {
-		if i+1 != v {
-			t.Errorf("ShellSort: %d should be equal to %d for %d", v, i+1, data)
+	data := randomArray(100)
+	sorted_data := copyArray(data)
+	sort.Ints(sorted_data)
+
+	current_copy = copyArray(data)
+	SelectionSort(current_copy)
+	for i, v := range(current_copy) {
+		s := sorted_data[i]
+		if v != s {
+			t.Errorf("SelectionSort: %d not equal %d", v, s)
 		}
 	}
 
-	data = []int{ 1, 2, 3, 4, 5, 6 }
+	current_copy = copyArray(data)
+	InsertionSort(current_copy)
+	for i, v := range(current_copy) {
+		s := sorted_data[i]
+		if v != s {
+			t.Errorf("InsertionSort: %d not equal %d", v, s)
+		}
+	}
+
+	current_copy = copyArray(data)
+	ShellSort(current_copy)
+	for i, v := range(current_copy) {
+		s := sorted_data[i]
+		if v != s {
+			t.Errorf("ShellSort: %d not equal %d", v, s)
+		}
+	}
+
+	current_copy = copyArray(data)
+	MergeSort(current_copy)
+	for i, v := range(current_copy) {
+		s := sorted_data[i]
+		if v != s {
+			t.Errorf("MergeSort: %d not equal %d", v, s)
+		}
+	}
+
+	current_copy = copyArray(data)
+	sort.Ints(current_copy)
 	error := 0
-	Shuffle(data)
-	for i, v := range(data) {
+	Shuffle(current_copy)
+	for i, v := range(current_copy) {
 		if i+1 == v {
 			error += 1
 		}
 	}
-	if error == len(data) {
-		t.Errorf("Shuffled array should not match origin %d", data)
+	if error == len(current_copy) {
+		t.Errorf("Shuffled array should not match origin %d", current_copy)
 	}
 }
