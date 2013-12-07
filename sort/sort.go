@@ -54,6 +54,20 @@ func MergeSort(data []int) {
 	_ms_sort(data, aux, 0, n - 1)
 }
 
+func MergeSortBU(data []int) {
+	n := len(data)
+	aux := make([]int, n, n)
+	for sz := 1; sz < n; sz *= 2 {
+		for lo := 0; lo < n-sz; lo += 2*sz {
+			hi := lo + 2*sz - 1
+			if hi > n - 1 {
+				hi = n - 1
+			}
+			_ms_merge(data, aux, lo, lo + sz - 1, hi)
+		}
+	}
+}
+
 /*
 	private party
 */

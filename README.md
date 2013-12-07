@@ -18,3 +18,4 @@ https://class.coursera.org/algs4partI-003/class/index
 	* ShellSort
 	* Shuffle
 	* MergeSort
+	* MergeSortBottomUp
