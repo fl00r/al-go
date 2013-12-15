@@ -73,6 +73,22 @@ func QuickSort(data []int) {
 	_qs_sort(data, 0, len(data) - 1)
 }
 
+func Select(data []int, k int) int {
+	Shuffle(data)
+	lo := 0; hi := len(data) - 1
+	for hi > lo {
+		j := _qs_partition(data, lo, hi)
+		if j < k {
+			lo = j + 1
+		} else if j > k {
+			hi = j - 1
+		} else {
+			return data[k]
+		}
+	}
+	return data[k]
+}
+
 /*
 	private party
 */
