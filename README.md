@@ -19,3 +19,4 @@ https://class.coursera.org/algs4partI-003/class/index
 	* Shuffle
 	* MergeSort
 	* MergeSortBottomUp
+	* QuickSort

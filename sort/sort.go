@@ -68,9 +68,52 @@ func MergeSortBU(data []int) {
 	}
 }
 
+func QuickSort(data []int) {
+	Shuffle(data)
+	_qs_sort(data, 0, len(data) - 1)
+}
+
 /*
 	private party
 */
+const(
+	Cutoff = 10
+)
+
+func _qs_sort(data []int, lo, hi int) {
+	if hi <= lo + Cutoff + 1 {
+		InsertionSort(data)
+		return
+	}
+	j := _qs_partition(data, lo, hi)
+	_qs_sort(data, lo, j-1)
+	_qs_sort(data, j+1, hi)
+}
+
+func _qs_partition(data []int, lo, hi int) int {
+	i := lo+1; j := hi
+	for {
+		for less(data, i, lo) {
+			if i == hi {
+				break
+			}
+			i++
+		}
+		for less(data, lo, j) {
+			if j == lo {
+				break
+			}
+			j--
+		}
+		if i >= j {
+			break
+		}
+		swap(data, i, j)
+	}
+
+	swap(data, lo, j)
+	return j
+}
 
 func _ms_sort(data, aux []int, lo, hi int) {
 	if(hi > lo) {
