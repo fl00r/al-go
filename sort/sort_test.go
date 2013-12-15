@@ -83,11 +83,12 @@ func TestLinkedListStack(t *testing.T) {
 
 	current_copy1 := copyArray(data)
 	current_copy2 := copyArray(data)
-	fifth := Select(current_copy1, 5)
 	QuickSort(current_copy2)
-	sorted_fifth := current_copy2[5]
-	if fifth != sorted_fifth {
-		t.Errorf("Selection: %d not equal %d", fifth, sorted_fifth)
+	for i, v := range(current_copy2) {
+		s := Select(current_copy1, i)
+		if v != s {
+			t.Errorf("Select: %d not equal %d", v, s)
+		}
 	}
 
 	current_copy = copyArray(data)
