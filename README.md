@@ -21,3 +21,4 @@ https://class.coursera.org/algs4partI-003/class/index
 	* MergeSortBottomUp
 	* QuickSort
 	* Selection
+	* 3-way QuickSort

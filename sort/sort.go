@@ -89,9 +89,37 @@ func Select(data []int, k int) int {
 	return data[k]
 }
 
+func QuickSort3w(data []int) {
+	Shuffle(data)
+	_qs_sort_3w(data, 0, len(data) - 1)
+}
+
 /*
 	private party
 */
+
+func _qs_sort_3w(data []int, lo, hi int) {
+	if hi <= lo {
+		return
+	}
+
+	lt := lo; gt := hi
+	i := lo
+	v := data[lo]
+	for i <= gt {
+		w := data[i]
+		if v > w {
+			swap(data, lt, i); lt++; i++
+		} else if v < w {
+			swap(data, i, gt); gt--
+		} else {
+			i++
+		}
+	}
+	_qs_sort_3w(data, lo, lt - 1)
+	_qs_sort_3w(data, gt + 1, hi)
+}
+
 const(
 	Cutoff = 10
 )
