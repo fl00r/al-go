@@ -6,13 +6,17 @@ https://class.coursera.org/algs4partI-003/class/index
 
 * UnionFind
 
-* Stack and Queue
-	* LinkedListStack
-	* SliceStack
-	* LinkedListQueue
-	* SliceQueue
+* Data Structures
+	* Stack
+		* LinkedList
+		* Slice
+	* Queue
+		* LinkedList
+		* Slice
+	* PriorityQueue
+		* Binary Heap
 
-* Sorting
+* Sorting Algorithms
 	* SelectionSort
 	* InsertionSort
 	* ShellSort

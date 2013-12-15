@@ -1,5 +1,5 @@
 package sort
-import(
+import (
 	"math/rand"
 	// "fmt"
 )
