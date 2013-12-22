@@ -101,6 +101,15 @@ func TestLinkedListStack(t *testing.T) {
 	}
 
 	current_copy = copyArray(data)
+	HeapSort(current_copy)
+	for i, v := range(current_copy) {
+		s := sorted_data[i]
+		if v != s {
+			t.Errorf("HeapSort: %d not equal %d", v, s)
+		}
+	}
+
+	current_copy = copyArray(data)
 	sort.Ints(current_copy)
 	error := 0
 	Shuffle(current_copy)

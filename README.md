@@ -26,3 +26,4 @@ https://class.coursera.org/algs4partI-003/class/index
 	* QuickSort
 	* Selection
 	* 3-way QuickSort
+	* HeapSort

@@ -94,9 +94,40 @@ func QuickSort3w(data []int) {
 	_qs_sort_3w(data, 0, len(data) - 1)
 }
 
+func HeapSort(data []int) {
+	n := len(data)
+	for k := n/2; k >= 1; k-- {
+		_hs_sink(data, k, n)
+	}
+	for n > 1 {
+		_hs_swap(data, 1, n); n--
+		_hs_sink(data, 1, n)
+	}
+}
+
 /*
 	private party
 */
+
+func _hs_sink(data []int, k, n int) {
+	for 2*k <= n {
+		j := 2*k
+		if j < n && less(data, j-1, j){
+			j++
+		}
+		if(!less(data, k-1, j-1)) {
+			break
+		}
+		_hs_swap(data, k, j)
+		k = j
+	}
+}
+
+func _hs_swap(data []int, i, j int) {
+	i_val := data[i-1]
+	data[i-1] = data[j-1]
+	data[j-1] = i_val
+}
 
 func _qs_sort_3w(data []int, lo, hi int) {
 	if hi <= lo {
