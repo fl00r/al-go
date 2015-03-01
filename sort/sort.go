@@ -56,7 +56,7 @@ func ShellSort(data []int) {
 func Shuffle(data []int) {
 	n := len(data)
 	for i := 0; i < n; i++ {
-		j := rand.Intn(n)
+		j := rand.Intn(i + 1)
 		swap(data, i, j)
 	}
 }
