@@ -4,15 +4,28 @@ import (
 	// "fmt"
 )
 
+func BubbleSort(data []int) {
+  n := len(data)
+  for i := 0; i < n; i++ {
+    for j := i+1; j < n; j++ {
+      if(less(data, j, i)) {
+        swap(data, i, j)
+      }
+    }
+  }
+}
+
 func SelectionSort(data []int) {
-	n := len(data)
-	for i := 0; i < n; i++ {
-		for j := i+1; j < n; j++ {
-			if(less(data, j, i)) {
-				swap(data, i, j)
-			}
-		}
-	}
+  n := len(data)
+  for i := 0; i < n; i++ {
+    min := i
+    for j := i+1; j < n; j++ {
+      if(less(data, j, i)) {
+        min = i
+      }
+    }
+    swap(data, i, min)
+  }
 }
 
 func InsertionSort(data []int) {
